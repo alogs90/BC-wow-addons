@@ -1,0 +1,9 @@
+## Title: ZodsManaBar
+## Interface: 20402
+## Notes: You know what it is
+## Author: the dingo
+
+
+
+libs\LibDruidMana-1.0\LibDruidMana-1.0.lua
+ZodsManaBar.lua

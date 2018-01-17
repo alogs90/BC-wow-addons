@@ -1,0 +1,49 @@
+------------------------------------------------------------------------
+r81717 | nevcairiel | 2008-09-14 07:33:16 -0400 (Sun, 14 Sep 2008) | 1 line
+Changed paths:
+   M /trunk/Bartender4/buttonPrototypes/PetButton.lua
+   M /trunk/Bartender4/specialBars/StanceBar.lua
+
+Bartender4: Update with changes from GitHub
+------------------------------------------------------------------------
+r81536 | pettigrow | 2008-09-08 10:18:47 -0400 (Mon, 08 Sep 2008) | 1 line
+Changed paths:
+   M /trunk/Bartender4/locale/frFR.lua
+
+Bartender4: frFR Update
+------------------------------------------------------------------------
+r81423 | nevcairiel | 2008-09-05 17:12:19 -0400 (Fri, 05 Sep 2008) | 2 lines
+Changed paths:
+   M /trunk/Bartender4/Bartender4.lua
+
+Bartender4: merge GitHub changes
+- don't require LDB to be present
+------------------------------------------------------------------------
+r81361 | nevcairiel | 2008-09-04 15:39:42 -0400 (Thu, 04 Sep 2008) | 1 line
+Changed paths:
+   M /trunk/Bartender4/Bartender4.toc
+
+Bartender4: fix load order
+------------------------------------------------------------------------
+r81359 | nevcairiel | 2008-09-04 15:06:07 -0400 (Thu, 04 Sep 2008) | 1 line
+Changed paths:
+   M /trunk/Bartender4/Bartender4.toc
+   A /trunk/Bartender4/libs/LibDataBroker-1.1.lua
+
+Bartender4: add missing LDB
+------------------------------------------------------------------------
+r81339 | nevcairiel | 2008-09-04 02:48:31 -0400 (Thu, 04 Sep 2008) | 2 lines
+Changed paths:
+   M /trunk/Bartender4/Bartender4.lua
+   M /trunk/Bartender4/locale/deDE.lua
+   M /trunk/Bartender4/locale/enUS.lua
+   M /trunk/Bartender4/locale/esES.lua
+   M /trunk/Bartender4/locale/frFR.lua
+   M /trunk/Bartender4/locale/koKR.lua
+   M /trunk/Bartender4/locale/ruRU.lua
+   M /trunk/Bartender4/locale/zhCN.lua
+   M /trunk/Bartender4/locale/zhTW.lua
+
+Bartender4: merged changes from GitHub
+- Added LDB launcher plugin
+------------------------------------------------------------------------

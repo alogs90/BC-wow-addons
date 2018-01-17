@@ -1,0 +1,14 @@
+## Title: BeanCounter
+## Interface: 20400
+## Dependencies: Stubby, Enhtooltip
+## OptionalDeps: !nLog, Babylonian, DebugLib, SlideBar, Auc-Advanced, Configator
+## SavedVariables: BeanCounterDB, BeanCounterAccountDB
+##
+## Version: 5.0.0 (BillyGoat)
+## Revision: $Id: BeanCounter.toc 3502 2008-09-17 18:03:11Z root $
+## URL: http://auctioneeraddon.com/
+##
+
+libs\Load.xml
+Embed.xml
+

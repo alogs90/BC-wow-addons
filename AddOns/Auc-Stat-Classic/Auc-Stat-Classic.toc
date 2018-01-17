@@ -1,0 +1,10 @@
+## Title: Auc:Stat:Classic
+## Interface: 20400
+## Dependancies: Auc-Advanced
+## OptionalDeps: Auctioneer
+##
+## SavedVariables: AucAdvancedStatClassicData
+## Version: 5.0.0 (BillyGoat)
+## URL: http://auctioneeraddon.com/
+##
+StatClassic.lua

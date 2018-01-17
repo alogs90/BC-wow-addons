@@ -1,0 +1,8 @@
+## Interface: 20200
+## Version: 1.92
+## Title: Debuff Filter
+## Notes: Filter out specific debuffs and buffs into separate frames.
+## Author: porkbone
+## SavedVariables: DebuffFilter_Config
+DebuffFilter.xml
+DebuffFilter_Options.xml

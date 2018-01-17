@@ -1,0 +1,15 @@
+## Title: Auc:Stat:Histogram
+## Notes: Statistics extension for Auctioneer that uses a histogram data collection method
+##
+## Interface: 20400
+## LoadOnDemand: 0
+## Disabled: 1
+## Dependencies: Auc-Advanced
+## SavedVariables: AucAdvancedStatHistogramData, AucAdvancedStatHistogramTotalData
+##
+## Version: 5.0.0 (BillyGoat)
+## Revision: $Id: Auc-Stat-Histogram.toc 3292 2008-08-02 13:13:48Z RockSlice $
+## URL: http://auctioneeraddon.com/
+##
+
+StatHistogram.lua

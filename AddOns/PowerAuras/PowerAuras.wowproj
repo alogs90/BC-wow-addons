@@ -1,0 +1,112 @@
+﻿<Project DefaultTargets="Deploy" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Default</Configuration>
+    <Name>PowerAuras</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9b8c0693-a28a-4a54-9e87-a616777f2937}</ProjectGuid>
+    <WowPath>C:\World of Warcraft\</WowPath>
+    <AssemblyName>PowerAuras</AssemblyName>
+    <RootNamespace>PowerAuras</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup>
+    <InterfaceVersion>20300</InterfaceVersion>
+    <AddonTitle>PowerAuras</AddonTitle>
+    <AddonNotes>Empty WoW Addon</AddonNotes>
+    <Author>Sven</Author>
+    <AddonVersion>1.0</AddonVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Default' ">
+    <OutputPath>.</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Aura1.tga" />
+    <Content Include="Aura10.tga" />
+    <Content Include="Aura11.tga" />
+    <Content Include="Aura12.tga" />
+    <Content Include="Aura13.tga" />
+    <Content Include="Aura14.tga" />
+    <Content Include="Aura15.tga" />
+    <Content Include="Aura16.tga" />
+    <Content Include="Aura17.tga" />
+    <Content Include="Aura18.tga" />
+    <Content Include="Aura19.tga" />
+    <Content Include="Aura2.tga" />
+    <Content Include="Aura20.tga" />
+    <Content Include="Aura21.tga" />
+    <Content Include="Aura22.tga" />
+    <Content Include="Aura23.tga" />
+    <Content Include="Aura24.tga" />
+    <Content Include="Aura25.tga" />
+    <Content Include="Aura26.tga" />
+    <Content Include="Aura27.tga" />
+    <Content Include="Aura28.tga" />
+    <Content Include="Aura29.tga" />
+    <Content Include="Aura3.tga" />
+    <Content Include="Aura30.tga" />
+    <Content Include="Aura31.tga" />
+    <Content Include="Aura32.tga" />
+    <Content Include="Aura33.tga" />
+    <Content Include="Aura34.tga" />
+    <Content Include="Aura35.tga" />
+    <Content Include="Aura36.tga" />
+    <Content Include="Aura37.tga" />
+    <Content Include="Aura38.tga" />
+    <Content Include="Aura39.tga" />
+    <Content Include="Aura4.tga" />
+    <Content Include="Aura40.tga" />
+    <Content Include="Aura41.tga" />
+    <Content Include="Aura42.tga" />
+    <Content Include="Aura43.tga" />
+    <Content Include="Aura44.tga" />
+    <Content Include="Aura45.tga" />
+    <Content Include="Aura46.tga" />
+    <Content Include="Aura47.tga" />
+    <Content Include="Aura48.tga" />
+    <Content Include="Aura49.tga" />
+    <Content Include="Aura5.tga" />
+    <Content Include="Aura50.tga" />
+    <Content Include="Aura6.tga" />
+    <Content Include="Aura7.tga" />
+    <Content Include="Aura8.tga" />
+    <Content Include="Aura9.tga" />
+    <Content Include="English_Manual.html" />
+    <Content Include="German_Manual.html" />
+    <Content Include="localisation.lua">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Notes-enGB.txt" />
+    <Content Include="Notes-zhCN.txt" />
+    <Content Include="PowerAuras.lua">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="PowerAuras.toc">
+      <SubType>TableOfContents</SubType>
+    </Content>
+    <Content Include="PowerAuras.xml">
+      <SubType>Frame</SubType>
+    </Content>
+    <Content Include="PowerAurasForm.xml">
+      <SubType>Frame</SubType>
+    </Content>
+    <Content Include="PowerOptions.lua">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="PowerOptions.xml">
+      <SubType>Frame</SubType>
+    </Content>
+    <Content Include="Timers.tga" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WowAddonStudio\1.0\WowAddonStudio.targets" />
+  <!--
+	To modify your build process, add your task inside one of the targets below and uncomment it. 
+		
+	<Target Name="BeforeClean"></Target>
+	<Target Name="AfterClean"></Target>
+	<Target Name="BeforeRebuild"></Target>
+	<Target Name="AfterRebuild"></Target>
+	<Target Name="BeforeDeploy"></Target>
+	<Target Name="AfterDeploy"></Target>
+	-->
+</Project>

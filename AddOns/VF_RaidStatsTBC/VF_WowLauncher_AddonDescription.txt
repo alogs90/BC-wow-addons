@@ -1,0 +1,5 @@
+
+#Version=1.2.1
+#Description=*Added support for loot recording
+#UpdateSubmitter=Dilatazu
+#UpdateImportance=|DefaultImportance=Good|

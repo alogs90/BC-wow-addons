@@ -1,0 +1,11 @@
+## Title: ZodsRaidAssign
+## Interface: 20408
+## Notes: raid assignment tool
+## Author: you mom
+
+## SavedVariables: ZRA_vars
+embeds.xml
+
+
+ZodsRaidAssign.lua
+

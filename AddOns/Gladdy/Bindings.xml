@@ -1,0 +1,17 @@
+<Bindings>
+	<Binding name="GLADDYTRINKET1" header="GLADDY">
+	--Button1
+	</Binding>
+	<Binding name="GLADDYTRINKET2">
+	--Button2
+	</Binding>
+	<Binding name="GLADDYTRINKET3">
+	--Button3
+	</Binding>
+	<Binding name="GLADDYTRINKET4">
+	--button4
+	</Binding>
+	<Binding name="GLADDYTRINKET5">
+	--button5
+	</Binding>
+</Bindings>

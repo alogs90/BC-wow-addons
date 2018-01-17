@@ -1,0 +1,18 @@
+## Interface: 30000
+## Title: Action Bar Saver 2
+## Notes: Saves and restores your action bars
+## Author: Mayen
+## Version: $Revision$
+## SavedVariables: ActionBSDB, ActionBarSaverDB
+## OptionalDeps: Bazaar
+
+libs\LibStub-1.0\LibStub-1.0.xml
+libs\CallbackHandler-1.0\CallbackHandler-1.0.xml
+libs\AceAddon-3.0\AceAddon-3.0.xml
+libs\AceDB-3.0\AceDB-3.0.xml
+
+localization.enUS.lua
+localization.deDE.lua
+localization.frFR.lua
+
+ActionBarSaver.lua

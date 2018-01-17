@@ -1,0 +1,9 @@
+## Title: ZodsLooter
+## Interface: 20402
+## Notes: You know what it is
+## Author: the dingo
+
+## SavedVariables: zloot_saved
+
+
+ZodsLooter.lua

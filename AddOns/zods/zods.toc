@@ -1,0 +1,7 @@
+## Title: zods
+## Interface: 20401
+
+
+## SavedVariables: zodsDB
+zods.lua
+zods.xml

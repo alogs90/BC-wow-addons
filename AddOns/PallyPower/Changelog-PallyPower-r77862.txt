@@ -1,0 +1,36 @@
+------------------------------------------------------------------------
+r77862 | aznamir | 2008-07-05 20:17:01 -0400 (Sat, 05 Jul 2008) | 3 lines
+Changed paths:
+   M /trunk/PallyPower/PallyPower.lua
+
+PallyPower:
+- added re-centering for the assignments window every time it opens
+- non-pallies can not configure normal blessings for other paladins
+------------------------------------------------------------------------
+r76943 | gnarfoz | 2008-06-17 13:18:22 -0400 (Tue, 17 Jun 2008) | 3 lines
+Changed paths:
+   M /trunk/PallyPower/locale/deDE.lua
+   M /trunk/PallyPower/locale/enUS.lua
+
+PallyPower:
+- Update deDE for the new strings in r76942
+- fix "Righeous Fury" in enUS
+------------------------------------------------------------------------
+r76942 | aznamir | 2008-06-17 12:35:00 -0400 (Tue, 17 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/PallyPower/locale/deDE.lua
+   M /trunk/PallyPower/locale/esES.lua
+   M /trunk/PallyPower/locale/frFR.lua
+   M /trunk/PallyPower/locale/koKR.lua
+
+PallyPower:
+- added missing entried for DE, ES, FR, KR locales. Need someone to translate them.
+------------------------------------------------------------------------
+r76073 | aznamir | 2008-06-05 08:18:51 -0400 (Thu, 05 Jun 2008) | 3 lines
+Changed paths:
+   M /trunk/PallyPower/PallyPower.lua
+
+PallyPower:
+- corrected blessing assignment restriction. Leaders can assign buffs for everyone, other people can assign buffs only for those who enabled 'free assign' on their side.
+- 'Free Assign' does not cause an error message if clicked by non-paladin.
+------------------------------------------------------------------------
