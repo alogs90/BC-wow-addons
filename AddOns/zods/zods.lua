@@ -117,7 +117,15 @@ function private.onEvent(frame, event, arg1, arg2, arg3, arg4, arg5, arg6, arg7,
 		
 		
 		end
-	
+	elseif (event == "ZONE_CHANGED_NEW_AREA") then
+		local zone = GetRealZoneText()
+		if zone == "Warsong Gulch" then
+			GridLayout:LoadLayout("By Group 10")
+		elseif zone == "Arathi Basin" or zone == "Eye of the Storm" then
+			GridLayout:LoadLayout("By Group 15")
+		elseif zone == "Alterac Valley" then
+			GridLayout:LoadLayout("By Group 40")
+		end
 	else
 		DEFAULT_CHAT_FRAME:AddMessage("unhandled onEvent")
 	end
@@ -145,6 +153,8 @@ private.scriptframe = CreateFrame("Frame")
 private.scriptframe:RegisterEvent("ADDON_LOADED")
 private.scriptframe:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED")
 private.scriptframe:RegisterEvent("CHAT_MSG_PARTY")
+private.scriptframe:RegisterEvent("ZONE_CHANGED_NEW_AREA")
+
 
 
 --private.scriptframe:RegisterEvent("COMBAT_LOG_EVENT")
@@ -207,16 +217,16 @@ end
 
 searchWord = "none"
 
-zf1 = CreateFrame("Button","A_TEXTURE",UIParent)
-
-
-	zf1:SetPoint("TOPLEFT", UIParent, "TOPLEFT", 20, 20)
-	zf1:SetWidth(100)
-	zf1:SetHeight(100)
-	zf1.texture = zf1:CreateTexture()
-	zf1.texture:SetTexture("Interface\\Icons\\Spell_Shadow_ShadowWordPain")
-	zf1.texture:SetPoint("TOPLEFT", zf1, "TOPLEFT", 4, -4)
-	zf1.texture:SetPoint("BOTTOMRIGHT", zf1, "BOTTOMRIGHT", -4, 4)
-	zf1:Show()
-	zf1.texture:Show()
+----zf1 = CreateFrame("Button","A_TEXTURE",UIParent)
+--
+--
+--	zf1:SetPoint("TOPLEFT", UIParent, "TOPLEFT", 20, 20)
+--	zf1:SetWidth(100)
+--	zf1:SetHeight(100)
+--	zf1.texture = zf1:CreateTexture()
+--	zf1.texture:SetTexture("Interface\\Icons\\Spell_Shadow_ShadowWordPain")
+--	zf1.texture:SetPoint("TOPLEFT", zf1, "TOPLEFT", 4, -4)
+--	zf1.texture:SetPoint("BOTTOMRIGHT", zf1, "BOTTOMRIGHT", -4, 4)
+--	zf1:Show()
+--	zf1.texture:Show()
 

@@ -276,7 +276,7 @@ end
 
 function ABS:RestoreAction(i, type, actionID, binding, arg1, arg2, arg3)
 	if( type == "spell" ) then
-		if( spellCache[arg1] ) then
+		if( spellCache[arg1 .. arg2] ) then
 			PickupSpell(spellCache[arg1 .. arg2], BOOKTYPE_SPELL)
 		elseif( arg2 ~= "" and spellCache[arg1 .. arg2] ) then
 			PickupSpell(spellCache[arg1 .. arg2], BOOKTYPE_SPELL)

@@ -1,36 +1,39 @@
 
 --local RL = AceLibrary("Roster-2.1")
 
-local private = {
+ZodsRaidAssign = {
 
 }
 	
 
-function private.onUpdate()
+function ZodsRaidAssign.onUpdate()
 
 end
 
 
-function private.onEvent(frame, event, arg1, arg2, arg3, ...)
+function ZodsRaidAssign.onEvent(frame, event, arg1, arg2, arg3, ...)
 
 	if (event == "ADDON_LOADED" and arg1 == "ZodsRaidAssign") then
-		private.onLoad()
+		ZodsRaidAssign.onLoad()
 		
-	elseif event == "ree" then
-
-
+	elseif event == "CHAT_MSG_ADDON" then
+		if arg1 == "ZRA" and (arg3 == "PARTY" or arg3 == "WHISPER" or arg3 == "RAID")  then -- and arg4 ~= UnitName("player")
+      ZodsRaidAssign:HandleRemoteData(arg2, arg4)
+	end
 	else
 		--unhandled onEvent
 		--DEFAULT_CHAT_FRAME:AddMessage(event..(arg1 or ""))
 	end
 end
 
+
+
 local backdrop = {
 	bgFile = "Interface\\ChatFrame\\ChatFrameBackground", tile = true, tileSize = 16,
 	edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border", edgeSize = 16,
 	insets = {left = 4, right = 4, top = 4, bottom = 4},
 }
-function private.onLoad()
+function ZodsRaidAssign.onLoad()
 local f = CreateFrame("Frame", "ZRALayoutFrame", UIParent)
 	f:EnableMouse(true)
 	f:SetMovable(true)
@@ -72,7 +75,7 @@ local f = CreateFrame("Frame", "ZRALayoutFrame", UIParent)
 	
 	--close button
 	local closebutton = CreateFrame("Button",nil,f,"UIPanelCloseButton")
-	closebutton:SetScript("OnClick", private.closeOnClick)
+	closebutton:SetScript("OnClick", ZodsRaidAssign.closeOnClick)
 	closebutton:SetPoint("TOPRIGHT",f,"TOPRIGHT",-2,-2)
 	f.closebutton = closebutton
 	closebutton.obj = f
@@ -154,14 +157,14 @@ local f = CreateFrame("Frame", "ZRALayoutFrame", UIParent)
 		{input = "SELECT", "Rotation", "Tank", "Group"},
 		{input = "STRING", phrase = "Title"},
 		}
-		private.Z_OptionsFrame(newRoleOptions, function(options)
+		ZodsRaidAssign.Z_OptionsFrame(newRoleOptions, function(options)
 				local complete = true
 				for i, v in pairs(options) do
 					if not ZOptionsFrame.optionsSelected[i] then complete = false end
 				end
 				if complete then
 					
-					private.AddNewRole(ZOptionsFrame.optionsSelected)
+					ZodsRaidAssign.AddNewRole(ZOptionsFrame.optionsSelected)
 				else
 					DEFAULT_CHAT_FRAME:AddMessage("selections were missing")
 				end
@@ -169,12 +172,12 @@ local f = CreateFrame("Frame", "ZRALayoutFrame", UIParent)
 		end)
 	
 	--create player frames
-	private.AllPlayerFrames()
+	ZodsRaidAssign.AllPlayerFrames()
 	
 	
 end
 
-function private.AllPlayerFrames()
+function ZodsRaidAssign.AllPlayerFrames()
 	local pre
 	local numplayers
 	ZRALayoutFrame.busy_playerFrames = 0
@@ -191,16 +194,16 @@ function private.AllPlayerFrames()
 		--in a party GetNumPartyMembers() doesnt count self
 		pre = "party"
 		numplayers = GetNumPartyMembers()
-		private.MakePlayerFrame("player")
+		ZodsRaidAssign.MakePlayerFrame("player")
 		ZRALayoutFrame.raid = false
 	end
 	
 	for i = 1, numplayers do
-		private.MakePlayerFrame(pre..i)
+		ZodsRaidAssign.MakePlayerFrame(pre..i)
 	end
 end
 
-function private.MakeCatcherFrame()
+function ZodsRaidAssign.MakeCatcherFrame()
 	local f
 	if #ZRALayoutFrame.catcherFrames - ZRALayoutFrame.busy_catcherFrames == 0 then
 		f = CreateFrame("Button", nil, ZRALayoutFrame);
@@ -216,24 +219,24 @@ function private.MakeCatcherFrame()
 		f.Text:SetPoint("CENTER", f, "CENTER")
 		f.Text:SetText("+")
 		f.Text:SetTextColor(0,0,0)
-		f.catch = private.CatcherFrameCatch
+		f.catch = ZodsRaidAssign.CatcherFrameCatch
 		f:SetScript("OnMouseUp", function(self, button)
 			if button == "RightButton" and #self.role.groups[self.rolegroup] == 1 and #self.role.groups ~= self.rolegroup then
 				--remove rolegroup
-				private.RemoveRoleGroup(self)
+				ZodsRaidAssign.RemoveRoleGroup(self)
 			end
 		end)
 		
 		table.insert(ZRALayoutFrame.catcherFrames,f)
 	else
-	local i = private.findNotBusyFrame(ZRALayoutFrame.catcherFrames)
+	local i = ZodsRaidAssign.findNotBusyFrame(ZRALayoutFrame.catcherFrames)
 		f = ZRALayoutFrame.catcherFrames[i]
 	end
 	ZRALayoutFrame.busy_catcherFrames = ZRALayoutFrame.busy_catcherFrames + 1
 	return f
 end
 
-function private.MakeRoleMemberFrame()
+function ZodsRaidAssign.MakeRoleMemberFrame()
 	local f
 	if #ZRALayoutFrame.roleMemberFrames - ZRALayoutFrame.busy_roleMemberFrames == 0 then
 		f = CreateFrame("Button", nil, ZRALayoutFrame);
@@ -252,13 +255,13 @@ function private.MakeRoleMemberFrame()
 		f:SetScript("OnMouseUp", function(self, button)
 			if button == "RightButton" then
 				--remove role member
-				private.RemoveRoleMember(self)
+				ZodsRaidAssign.RemoveRoleMember(self)
 			end
 		end)
 
 		table.insert(ZRALayoutFrame.roleMemberFrames,f)
 	else
-	local i = private.findNotBusyFrame(ZRALayoutFrame.roleMemberFrames)
+	local i = ZodsRaidAssign.findNotBusyFrame(ZRALayoutFrame.roleMemberFrames)
 		f = ZRALayoutFrame.roleMemberFrames[i]
 	end
 	ZRALayoutFrame.busy_roleMemberFrames = ZRALayoutFrame.busy_roleMemberFrames + 1
@@ -269,7 +272,7 @@ end
 
 
 
-function private.MakePlayerFrame(unitid)
+function ZodsRaidAssign.MakePlayerFrame(unitid)
 	local f
 	if #ZRALayoutFrame.playerFrames - ZRALayoutFrame.busy_playerFrames == 0 then
 		f = CreateFrame("Button", nil, ZRALayoutFrame);
@@ -313,7 +316,7 @@ function private.MakePlayerFrame(unitid)
 		
 		table.insert(ZRALayoutFrame.playerFrames, f)
 	else
-		local i = private.findNotBusyFrame(ZRALayoutFrame.playerFrames)
+		local i = ZodsRaidAssign.findNotBusyFrame(ZRALayoutFrame.playerFrames)
 		f = ZRALayoutFrame.playerFrames[i]
 	end
 	f:SetPoint("CENTER", ZRALayoutFrame, "BOTTOMLEFT", 30 + 31*ZRALayoutFrame.busy_playerFrames, 30);
@@ -327,7 +330,7 @@ function private.MakePlayerFrame(unitid)
 	ZRALayoutFrame.busy_playerFrames = ZRALayoutFrame.busy_playerFrames + 1
 end
 
-function private.findNotBusyFrame(frames)
+function ZodsRaidAssign.findNotBusyFrame(frames)
 	for i = 1, #frames do
 		if frames[i].busy == false then
 			return i
@@ -335,7 +338,7 @@ function private.findNotBusyFrame(frames)
 	end
 end
 
-function private.AddNewRole(role)
+function ZodsRaidAssign.AddNewRole(role)
 	local f
 	if #ZRALayoutFrame.roleFrames - ZRALayoutFrame.busy_roleframes == 0 then
 		f = CreateFrame("Frame", nil, ZRALayoutFrame)
@@ -380,26 +383,26 @@ function private.AddNewRole(role)
 		f.groups = {}
 		f:Show()
 		ZRALayoutFrame.usedSpaceX = ZRALayoutFrame.usedSpaceX + f.width
-		c = private.MakeCatcherFrame()
+		c = ZodsRaidAssign.MakeCatcherFrame()
 		c.busy = true
 		c.role = f
 		c.rolegroup = 1
 		table.insert(f.groups,{c})
 		
-		private.PositionRoleMembers(c)
+		ZodsRaidAssign.PositionRoleMembers(c)
 		c:SetParent(f)
 		c:Show()
 	end
 	
 end
 
-function private.CatcherFrameCatch(catcher, unitid)
+function ZodsRaidAssign.CatcherFrameCatch(catcher, unitid)
 	if #catcher.role.groups[catcher.rolegroup] > 1 or catcher.role.groups[catcher.rolegroup + 1] then
 		--just increment
 		
 	else
 		--open new group
-		local c = private.MakeCatcherFrame()
+		local c = ZodsRaidAssign.MakeCatcherFrame()
 		table.insert(catcher.role.groups,{c})  --role.groups = {{c}}
 		c.busy = true
 		c:Show()
@@ -408,23 +411,23 @@ function private.CatcherFrameCatch(catcher, unitid)
 		DEFAULT_CHAT_FRAME:AddMessage("new rolegroup is "..c.rolegroup)
 		c:SetParent(catcher.role)
 		
-		private.PositionRoleMembers(c)
+		ZodsRaidAssign.PositionRoleMembers(c)
 		--c:SetPoint("TOPLEFT", c.role, "TOPLEFT", 20+40*(c.rolegroup-1), -20)
 		
 		
 	end
-	local m = private.MakeRoleMemberFrame()
+	local m = ZodsRaidAssign.MakeRoleMemberFrame()
 	table.insert(catcher.role.groups[catcher.rolegroup],m)
 	m.Text:SetText(ZDragframe.Text:GetText())
 	m:SetBackdropColor(ZDragframe:GetBackdropColor())
 	m.role = catcher.role
 	m.rolegroup = catcher.rolegroup
 	m:Show()
-	private.PositionRoleMembers(m)
+	ZodsRaidAssign.PositionRoleMembers(m)
 	
 end
 
-function private.RemoveRoleMember(self)
+function ZodsRaidAssign.RemoveRoleMember(self)
 	for i, v in ipairs(self.role.groups[self.rolegroup]) do
 		if v == self then
 			table.remove(self.role.groups[self.rolegroup], i)
@@ -434,7 +437,7 @@ function private.RemoveRoleMember(self)
 	self.busy = false
 	self:Hide()
 	ZRALayoutFrame.busy_roleMemberFrames = ZRALayoutFrame.busy_roleMemberFrames - 1
-	private.PositionRoleMembers(self)
+	ZodsRaidAssign.PositionRoleMembers(self)
 	
 end
 
@@ -450,7 +453,7 @@ function printGroups()
 	end
 end
 
-function private.RemoveRoleGroup(self)
+function ZodsRaidAssign.RemoveRoleGroup(self)
 	
 	self.busy = false
 	self:Hide()
@@ -468,13 +471,13 @@ function private.RemoveRoleGroup(self)
 	
 	table.remove(self.role.groups, self.rolegroup)
 	for i = 1,#self.role.groups do
-		private.PositionRoleMembers(self.role.groups[i][1])
+		ZodsRaidAssign.PositionRoleMembers(self.role.groups[i][1])
 	end
 
 	
 end
 
-function private.PositionRoleMembers(self)
+function ZodsRaidAssign.PositionRoleMembers(self)
 	for i, v in ipairs(self.role.groups[self.rolegroup]) do
 		v:SetPoint("TOPLEFT", v.role, "TOPLEFT", 20+40*(v.rolegroup-1), -40 - (i-2)*32)
 	end
@@ -483,7 +486,8 @@ function private.PositionRoleMembers(self)
 end
 
 
-function private.Z_OptionsFrame(options, returnfunction)
+
+function ZodsRaidAssign.Z_OptionsFrame(options, returnfunction)
 	local width = 300
 	local height = 300
 	
@@ -617,12 +621,13 @@ end
 
 
 
-private.scriptframe = CreateFrame("Frame")
-private.scriptframe:RegisterEvent("ADDON_LOADED")
-private.scriptframe:SetScript("OnEvent", private.onEvent)
-private.scriptframe:SetScript("OnUpdate", private.onUpdate)
---private.scriptframe:RegisterEvent("RAID_ROSTER_UPDATE") 
-private.scriptframe:RegisterEvent("PARTY_MEMBERS_CHANGED")
+ZodsRaidAssign.scriptframe = CreateFrame("Frame")
+ZodsRaidAssign.scriptframe:RegisterEvent("ADDON_LOADED")
+ZodsRaidAssign.scriptframe:RegisterEvent("CHAT_MSG_ADDON")
+ZodsRaidAssign.scriptframe:SetScript("OnEvent", ZodsRaidAssign.onEvent)
+ZodsRaidAssign.scriptframe:SetScript("OnUpdate", ZodsRaidAssign.onUpdate)
+--ZodsRaidAssign.scriptframe:RegisterEvent("RAID_ROSTER_UPDATE") 
+ZodsRaidAssign.scriptframe:RegisterEvent("PARTY_MEMBERS_CHANGED")
 
 function debugthis(arg1)
 	func = ZDragframe:GetCenter()
@@ -692,17 +697,17 @@ SlashCmdList["ZRAIDASSIGN"] = function(msg)
 	elseif (command == "asdas") then
 		
 	else 
-		private.OpenMenu()
+		ZodsRaidAssign.OpenMenu()
 	end
 end
 
 
-function private.OpenMenu()
-	private.AllPlayerFrames()
+function ZodsRaidAssign.OpenMenu()
+	ZodsRaidAssign.AllPlayerFrames()
 	ZRALayoutFrame:Show()
 end
 
-function private.closeOnClick(this)
+function ZodsRaidAssign.closeOnClick(this)
 	this.obj:Hide()
 end
 

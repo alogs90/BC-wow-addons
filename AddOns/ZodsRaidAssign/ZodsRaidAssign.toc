@@ -5,7 +5,7 @@
 
 ## SavedVariables: ZRA_vars
 embeds.xml
+libs\ChatThrottleLib\ChatThrottleLib.xml
 
-
+comm.lua
 ZodsRaidAssign.lua
-
